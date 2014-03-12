@@ -1,7 +1,4 @@
 package ping_client_java;
-/**
- * Created by lichon on 3/12/14.
- */
 
 import java.io.IOException;
 import java.io.InputStream;

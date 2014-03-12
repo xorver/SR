@@ -6,11 +6,9 @@ import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-/**
- * Created by lichon on 3/12/14.
- */
 public class Server {
 
+    @SuppressWarnings({"InfiniteLoopStatement", "ResultOfMethodCallIgnored"})
     public static void main(String[] args) throws IOException {
         ServerSocket ssocket = new ServerSocket(Integer.parseInt(args[0]));
         try {
@@ -29,9 +27,7 @@ public class Server {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            if (ssocket != null)
-                try { ssocket.close(); }
-                catch (IOException e1) {}
+                ssocket.close();
         }
     }
 }
