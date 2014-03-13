@@ -22,13 +22,13 @@ endif
 # Add inputs and outputs from these tool invocations to the build variables 
 
 # All Target
-all: ping-client-c
+all: zad1-client-c
 
 # Tool invocations
-ping-client-c: $(OBJS) $(USER_OBJS)
+zad1-client-c: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: GCC C Linker'
-	gcc  -o"ping-client-c" $(OBJS) $(USER_OBJS) $(LIBS)
+	gcc  -o"zad1-client-c" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
