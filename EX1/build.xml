@@ -1,5 +1,5 @@
 <project>
-
+<!--zad1-->
     <target name="clean_z1">
         <delete dir="build/zad1"/>
     </target>
@@ -20,7 +20,33 @@
 
     <target name="run_z1">
         <java jar="build/zad1/jar/Server.jar" fork="true">
-            <arg value="${arg0}"/>
+            <arg value="${port}"/>
+        </java>
+    </target>
+
+<!--zad2-->
+    <target name="clean_z2">
+        <delete dir="build/zad2"/>
+    </target>
+
+    <target name="compile_z2">
+        <mkdir dir="build/zad2/classes"/>
+        <javac srcdir="src/zad2_server_java" destdir="build/zad2/classes"/>
+    </target>
+
+    <target name="jar_z2">
+        <mkdir dir="build/zad2/jar"/>
+        <jar destfile="build/zad2/jar/Server.jar" basedir="build/zad2/classes">
+            <manifest>
+                <attribute name="Main-Class" value="zad2_server_java.Server"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="run_z2">
+        <java jar="build/zad2/jar/Server.jar" fork="true">
+            <arg value="${port}"/>
+            <arg value="${path}"/>
         </java>
     </target>
 

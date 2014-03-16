@@ -38,7 +38,7 @@ public class Server {
                 Socket socket = ssocket.accept();
                 InputStream in = socket.getInputStream();
                 OutputStream out = socket.getOutputStream();
-                byte received[] = new byte[128];
+                byte[] received = new byte[128];
 
                 int read=0;
                 while(read!=-1) {
