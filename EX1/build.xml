@@ -1,0 +1,27 @@
+<project>
+
+    <target name="clean_z1">
+        <delete dir="build/zad1"/>
+    </target>
+
+    <target name="compile_z1">
+        <mkdir dir="build/zad1/classes"/>
+        <javac srcdir="src/zad1_server_java" destdir="build/zad1/classes"/>
+    </target>
+
+    <target name="jar_z1">
+        <mkdir dir="build/zad1/jar"/>
+        <jar destfile="build/zad1/jar/Server.jar" basedir="build/zad1/classes">
+            <manifest>
+                <attribute name="Main-Class" value="zad1_server_java.Server"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="run_z1">
+        <java jar="build/zad1/jar/Server.jar" fork="true">
+            <arg value="${arg0}"/>
+        </java>
+    </target>
+
+</project>
