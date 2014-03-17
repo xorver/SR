@@ -32,6 +32,11 @@ public class Server {
 
     @SuppressWarnings({"InfiniteLoopStatement", "ResultOfMethodCallIgnored"})
     public static void main(String[] args) throws IOException {
+        if(args.length!=1){
+            System.out.println("Usage: prog_name <PORT>");
+            System.exit(1);
+        }
+
         ServerSocket ssocket = new ServerSocket(Integer.parseInt(args[0]));
         try {
             while (true) {

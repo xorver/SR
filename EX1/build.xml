@@ -50,4 +50,31 @@
         </java>
     </target>
 
+    <!--zad3-->
+    <target name="clean_z3">
+        <delete dir="build/zad3"/>
+    </target>
+
+    <target name="compile_z3">
+        <mkdir dir="build/zad3/classes"/>
+        <javac srcdir="src/zad3_chat_java" destdir="build/zad3/classes"/>
+    </target>
+
+    <target name="jar_z3">
+        <mkdir dir="build/zad3/jar"/>
+        <jar destfile="build/zad3/jar/ChatClient.jar" basedir="build/zad3/classes">
+            <manifest>
+                <attribute name="Main-Class" value="zad3_chat_java.ChatClient"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="run_z3">
+        <java jar="build/zad3/jar/ChatClient.jar" fork="true">
+            <arg value="${ip}"/>
+            <arg value="${port}"/>
+            <arg value="${login}"/>
+        </java>
+    </target>
+
 </project>

@@ -14,6 +14,11 @@ public class Server {
 
     @SuppressWarnings({"InfiniteLoopStatement", "ResultOfMethodCallIgnored"})
     public static void main(String[] args) throws IOException {
+        if(args.length!=2){
+            System.out.println("Usage: prog_name <PORT> <PATH>");
+            System.exit(1);
+        }
+
         ServerSocket ssocket = new ServerSocket(Integer.parseInt(args[0]));
         String filePath = args[1];
         try {

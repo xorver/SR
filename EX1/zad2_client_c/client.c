@@ -7,6 +7,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <strings.h>
+#include <sys/types.h>
+#include <errno.h>
 
 #define BUFLEN 10000
 
@@ -31,11 +33,18 @@ int main(int argc, char **argv) {
 	serv_addr.sin_addr.s_addr = inet_addr(argv[1]);
 	serv_addr.sin_port = htons(atoi(argv[2]));
 
-	connect(sock_fd,(struct sockaddr*) &serv_addr, sizeof(serv_addr));
+	if(connect(sock_fd,(struct sockaddr*) &serv_addr, sizeof(serv_addr)) == -1){
+		fprintf(stderr, "Connection error: %s\n",strerror(errno));
+		exit(1);
+	}
 
 	//send file
 	char buffer[BUFLEN];
 	FILE* file = fopen(filePath,"r");
+	if(file==NULL){
+		fprintf(stderr, "Opening file error: %s\n",strerror(errno));
+		exit(1);
+	}
 	int size;
 	while((size=fread(buffer,1,BUFLEN,file))>0)
 		send(sock_fd,buffer,size,0);
